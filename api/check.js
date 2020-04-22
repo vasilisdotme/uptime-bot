@@ -9,7 +9,9 @@ module.exports = (req, res) => {
   }
 
   const authenticated = key === process.env.RIGHT_KEY
-  
+  axios.defaults.validateStatus = function () {
+    return true;
+  };
 
   if(authenticated){
     axios.get(url).then((response) => {
