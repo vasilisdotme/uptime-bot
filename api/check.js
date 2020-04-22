@@ -1,5 +1,6 @@
 module.exports = (req, res) => {
-    let status = req.key === process.env.RIGHT_KEY ? "UP" : "DOWN"
+  const { key } = req.query
+    let status = key === process.env.RIGHT_KEY ? "UP" : "DOWN"
 
      res.json({
        status: status
