@@ -17,6 +17,13 @@ module.exports = (req, res) => {
     axios.get(url).then((response) => {
       let status = response.status
   
+      res.json({
+        authenticated: authenticated,
+        status: status,
+        hook: process.env.SLACK_HOOK,
+        payload: payload || 'nope'
+      })
+
       if(status !== 200){
         let payload = {
           text: url + " respond with status code: " + status
@@ -24,12 +31,7 @@ module.exports = (req, res) => {
         axios.post(process.env.SLACK_HOOK, payload)
       }
 
-      res.json({
-        authenticated: authenticated,
-        status: status,
-        hook: process.env.SLACK_HOOK,
-        payload: payload || 'nope'
-      })
+      
     })
   }  
   //process.env.TEST_DOMAIN
