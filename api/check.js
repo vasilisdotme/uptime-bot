@@ -1,9 +1,31 @@
 module.exports = (req, res) => {
-  const { key } = req.query
-    let status = key === process.env.RIGHT_KEY ? "UP" : "DOWN"
+  const axios = require('axios')
+  const { key, url } = req.query
 
-     res.json({
-       status: status
-     })
-   //process.env.TEST_DOMAIN
+  if(key === undefined || url === undefined){
+    return res.json({
+      errorMessage: "both key and url required",
+    })
+  }
+
+  const authenticated = key === process.env.RIGHT_KEY
+  
+
+  if(authenticated){
+    axios.get(url).then((response) => {
+      let status = response.status
+  
+      if(status !== 200){
+        axios.post(process.env.SLACK_HOOK, {
+            text: url + " respond with status code: " + status
+        })
+      }
+
+      res.json({
+        authenticated: authenticated,
+        status: status
+      })
+    })
+  }  
+  //process.env.TEST_DOMAIN
 }
