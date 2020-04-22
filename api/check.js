@@ -25,7 +25,8 @@ module.exports = (req, res) => {
 
       res.json({
         authenticated: authenticated,
-        status: status
+        status: status,
+        hook: process.env.SLACK_HOOK
       })
     })
   }  
