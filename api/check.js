@@ -1,4 +1,6 @@
 module.exports = (req, res) => {
-     res.text("ok")
+     res.json({
+       status: "UP"
+     })
    //process.env.TEST_DOMAIN
 }
