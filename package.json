@@ -1,0 +1,22 @@
+{
+  "name": "uptime-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vasilisdotme/uptime-bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vasilisdotme/uptime-bot/issues"
+  },
+  "homepage": "https://github.com/vasilisdotme/uptime-bot#readme",
+  "dependencies": {
+    "axios": "^0.19.2"
+  }
+}
