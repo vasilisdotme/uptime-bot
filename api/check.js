@@ -4,7 +4,7 @@ module.exports = (req, res) => {
 
   if(typeof key === undefined || typeof url === undefined){
     return res.json({
-      errorMessage: "both key and url required",
+      errorMessage: "both key and url required to complete authentication",
     })
   }
 
